@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#4A90D9">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>计数器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="tabs">
+      <button class="tab active" data-tab="counter">计数</button>
+      <button class="tab" data-tab="history">历史</button>
+    </nav>
+
+    <div class="page" id="counter-page">
+      <div class="time-selector" id="timeSelector">
+        <div class="time-options">
+          <button class="time-option active" data-time="30">30秒</button>
+          <button class="time-option" data-time="60">1分钟</button>
+          <button class="time-option" data-time="120">2分钟</button>
+        </div>
+      </div>
+
+      <div class="timer-display">
+        <div class="timer-value" id="timer">0:30</div>
+        <div class="timer-label">剩余时间</div>
+      </div>
+
+      <div class="count-display">
+        <div class="count-value" id="count">0</div>
+        <div class="count-label">当前计数</div>
+      </div>
+
+      <button class="count-btn" id="countBtn">
+        <span>点击计数</span>
+      </button>
+
+      <button class="reset-btn" id="resetBtn" style="display:none">开始新计数</button>
+    </div>
+
+    <div class="page" id="history-page" style="display:none">
+      <div class="history-list" id="historyList">
+        <div class="empty-state">暂无历史记录</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
