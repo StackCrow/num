@@ -11,6 +11,7 @@ const timerEl = document.getElementById('timer');
 const countEl = document.getElementById('count');
 const countBtn = document.getElementById('countBtn');
 const resetBtn = document.getElementById('resetBtn');
+const restartBtn = document.getElementById('restartBtn');
 const historyList = document.getElementById('historyList');
 const tabs = document.querySelectorAll('.tab');
 const pages = document.querySelectorAll('.page');
@@ -53,6 +54,9 @@ countBtn.addEventListener('click', () => {
 
 // Reset button
 resetBtn.addEventListener('click', resetSession);
+
+// Restart button
+restartBtn.addEventListener('click', restartSession);
 
 function updateTimerDisplay() {
   const minutes = Math.floor(selectedTime / 60);
@@ -126,6 +130,27 @@ function endSession() {
 function resetSession() {
   count = 0;
   countEl.textContent = '0';
+  resetBtn.style.display = 'none';
+  countBtn.classList.remove('disabled');
+
+  // Restore time selector
+  document.getElementById('timeSelector').style.opacity = '1';
+  document.getElementById('timeSelector').style.pointerEvents = 'auto';
+
+  updateTimerDisplay();
+}
+
+function restartSession() {
+  // Stop current timer
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  // Reset state without saving
+  count = 0;
+  countEl.textContent = '0';
+  isRunning = false;
   resetBtn.style.display = 'none';
   countBtn.classList.remove('disabled');
 
