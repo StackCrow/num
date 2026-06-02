@@ -4,7 +4,7 @@ let timer = null;
 let startTime = null;
 let endTime = null;
 let isRunning = false;
-let selectedTime = 30; // Default 30 seconds
+let selectedTime = 60; // Default 1 minute
 
 // DOM
 const timerEl = document.getElementById('timer');
