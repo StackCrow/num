@@ -122,22 +122,24 @@ html, body {
 
 /* Button Group */
 .btn-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  position: relative;
+  width: 200px;
+  height: 200px;
   margin: 0 auto 20px;
 }
 
 /* Restart Button */
 .restart-btn {
-  width: 80px;
-  height: 80px;
+  position: absolute;
+  right: -60px;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: none;
   background: linear-gradient(145deg, #FF8A8A, #E55555);
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
