@@ -131,7 +131,7 @@ html, body {
 /* Restart Button */
 .restart-btn {
   position: absolute;
-  right: -60px;
+  left: -60px;
   bottom: 0;
   width: 60px;
   height: 60px;
