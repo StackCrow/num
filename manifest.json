@@ -2,7 +2,7 @@
   "name": "计数器",
   "short_name": "计数器",
   "description": "60秒倒计时计数器",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#F5F5F5",
   "theme_color": "#4A90D9",

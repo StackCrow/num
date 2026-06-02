@@ -1,12 +1,12 @@
-const CACHE_NAME = 'counter-v1';
+const CACHE_NAME = 'counter-v2';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/app.js',
-  '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  './',
+  './index.html',
+  './style.css',
+  './app.js',
+  './manifest.json',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
 ];
 
 // Install
@@ -35,6 +35,6 @@ self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request)
       .then(cached => cached || fetch(e.request))
-      .catch(() => caches.match('/index.html'))
+      .catch(() => caches.match('./index.html'))
   );
 });
