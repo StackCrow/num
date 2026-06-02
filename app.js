@@ -42,15 +42,16 @@ timeOptions.forEach(option => {
   });
 });
 
-// Count button
-countBtn.addEventListener('click', () => {
+// Count button - use touchstart for faster response
+countBtn.addEventListener('touchstart', (e) => {
+  e.preventDefault();
   if (!isRunning && count === 0) {
     startSession();
   }
   if (isRunning) {
     increment();
   }
-});
+}, { passive: false });
 
 // Reset button
 resetBtn.addEventListener('click', resetSession);
@@ -208,20 +209,11 @@ function updateHistoryList() {
   }).join('');
 }
 
-// Prevent double-tap zoom and scrolling
+// Prevent multi-touch zoom only (allow fast tapping)
 document.addEventListener('touchstart', function(e) {
   if (e.touches.length > 1) {
     e.preventDefault();
   }
-}, { passive: false });
-
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function(e) {
-  const now = Date.now();
-  if (now - lastTouchEnd <= 300) {
-    e.preventDefault();
-  }
-  lastTouchEnd = now;
 }, { passive: false });
 
 document.addEventListener('gesturestart', function(e) {
