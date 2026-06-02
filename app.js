@@ -80,18 +80,36 @@ function startSession() {
   updateTimer();
 }
 
+// Audio context for haptic feedback on iOS
+let audioCtx = null;
+function playClickSound() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  const oscillator = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+  oscillator.frequency.value = 1000;
+  gainNode.gain.value = 0.1; // Very quiet
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime + 0.01); // 10ms click
+}
+
 function increment() {
   count++;
   countEl.textContent = count;
 
-  // Vibrate
+  // Haptic feedback
   if (navigator.vibrate) {
     navigator.vibrate(10);
+  } else {
+    playClickSound(); // iOS fallback
   }
 
   // Button animation
   countBtn.style.transform = 'scale(0.95)';
-  setTimeout(() => countBtn.style.transform = 'scale(1)', 100);
+  setTimeout(() => countBtn.style.transform = 'scale(1)', 50);
 }
 
 function updateTimer() {
